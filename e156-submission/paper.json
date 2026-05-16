@@ -1,0 +1,96 @@
+{
+  "title": "CT.gov Publication Index Gap",
+  "slug": "ctgov-publication-index-gap",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-29",
+  "body": "How much of CT.gov publication-link missingness survives when no-link studies are re-audited with broader exact-ID search beyond the earlier PubMed-only pass? We re-audited the existing 1,050-study sponsor-class-stratified sample of older no-link studies drawn from 140,363 eligible no-link records in the March 29, 2026 registry snapshot. We compared PubMed exact-ID matches with Europe PMC exact-ID matches, separating total rescue, non-MED rescue, and weighted publication-only visibility. Weighted PubMed exact-ID matching captured only 1.2 percent of no-link records, but Europe PMC exact-ID rescue added 39.6 points, lifting weighted any-match visibility to 40.8 percent. Non-MED rescue was much smaller at 2.8 points, while weighted external-publication-only visibility still reached 29.1 percent. Publication-link missingness therefore combines real silence with a much larger indexing and linkage gap than the PubMed-only audit suggested, especially in NIH-linked and network-linked no-link portfolios. The audit is sample-based, exact-ID only, and cannot adjudicate whether every retrieved paper fully reports the registered study or whether links were added later.",
+  "word_count": 156,
+  "sentence_count": 7,
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "How much of CT.gov publication-link missingness survives when no-link studies are re-audited with broader exact-ID search beyond the earlier PubMed-only pass?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We re-audited the existing 1,050-study sponsor-class-stratified sample of older no-link studies drawn from 140,363 eligible no-link records in the March 29, 2026 registry snapshot."
+    },
+    {
+      "role": "Method",
+      "text": "We compared PubMed exact-ID matches with Europe PMC exact-ID matches, separating total rescue, non-MED rescue, and weighted publication-only visibility."
+    },
+    {
+      "role": "Primary result",
+      "text": "Weighted PubMed exact-ID matching captured only 1.2 percent of no-link records, but Europe PMC exact-ID rescue added 39.6 points, lifting weighted any-match visibility to 40.8 percent."
+    },
+    {
+      "role": "Secondary result",
+      "text": "Non-MED rescue was much smaller at 2.8 points, while weighted external-publication-only visibility still reached 29.1 percent."
+    },
+    {
+      "role": "Interpretation",
+      "text": "Publication-link missingness therefore combines real silence with a much larger indexing and linkage gap than the PubMed-only audit suggested, especially in NIH-linked and network-linked no-link portfolios."
+    },
+    {
+      "role": "Boundary",
+      "text": "The audit is sample-based, exact-ID only, and cannot adjudicate whether every retrieved paper fully reports the registered study or whether links were added later."
+    }
+  ],
+  "notes": {
+    "app": "CT.gov Publication Index Gap dashboard",
+    "data": "1,050-study sponsor-class-stratified exact-ID audit representing 140,363 eligible older no-link studies",
+    "code": "https://github.com/mahmood726-cyber/ctgov-publication-index-gap",
+    "doi": "",
+    "version": "1.0.0",
+    "date": "2026-03-29",
+    "validation": "FULL REGISTRY RUN"
+  },
+  "type": "methods",
+  "primary_estimand": "Weighted exact-ID external publication rescue among older CT.gov no-link studies",
+  "validation": {
+    "status": "pass",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": true,
+        "detail": "Found 156 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
+}
