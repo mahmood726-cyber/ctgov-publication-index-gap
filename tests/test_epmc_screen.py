@@ -82,3 +82,37 @@ def test_duplicate_ids_rejected(tmp_path):
     ids.write_text(NCT + '\n' + NCT + '\n')
     with pytest.raises(ValueError, match='Duplicate'):
         replay(ids, tmp_path, tmp_path / 'out.jsonl')
+
+
+def test_request_metadata_mismatched_nct_fails_closed():
+    response_for_another_nct = {**response(), 'request': {'queryString': '"NCT00000001"'}}
+    row = classify(NCT, response_for_another_nct)
+    assert row['query_status'] == 'QUERY_MISMATCH'
+    assert row['archived_query_status'] == 'MISMATCH'
+    assert row['candidate_count'] is None
+
+
+def test_request_metadata_exact_nct_records_scope():
+    correct_response = {**response(), 'request': {'queryString': f'"{NCT}"'}}
+    row = classify(NCT, correct_response)
+    assert row['query_status'] == 'COMPLETE_SEARCH_RESPONSE'
+    assert row['archived_query_status'] == 'EXACT_NCT_QUERY_IN_RESPONSE'
+    assert row['external_publication_status'] == 'NOT_ESTABLISHED'
+
+
+def test_missing_request_metadata_not_inferred_to_be_verified():
+    row = classify(NCT, response())
+    assert row['archived_query_status'] == 'NOT_VERIFIABLE'
+
+
+def test_cli_rejects_overwrite_of_cached_source(tmp_path):
+    ids = tmp_path / 'ncts.txt'
+    ids.write_text(NCT + '\n')
+    cached = tmp_path / 'cached'
+    cached.mkdir()
+    cache_file = cached / f'{NCT}.json'
+    original = json.dumps(response())
+    cache_file.write_text(original)
+    with pytest.raises(ValueError, match='cached source'):
+        replay(ids, cached, cache_file)
+    assert cache_file.read_text() == original
