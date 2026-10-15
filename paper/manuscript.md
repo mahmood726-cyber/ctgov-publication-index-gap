@@ -21,3 +21,9 @@ How much of CT.gov publication-link missingness survives when no-link studies ar
 1. Expand the background and rationale into a full introduction.
 2. Translate the E156 capsule into detailed methods, results, and discussion sections.
 3. Add figures, tables, and a submission-ready reference narrative around the existing evidence object.
+
+
+## Scientific-validity notice (15 October 2026)
+
+**Scientific validity notice (15 October 2026).** The historical 1,050-trial / 140,363-registry-record sample and reported weighted 1.2%, +39.6 percentage-point, 40.8% and 29.1% database match estimates are **not independently reproduced here**. The original sampled NCTs, dated registry snapshot, raw search results, relevance adjudications, strata population totals and original weighting code are missing. An NCT search hit is only a candidate reference, not proof that a retrieved paper reports a trial's results; MED/non-MED are index sources, not paper-type adjudications. The new src/epmc_screen.py and src/epmc_cli.py are separate offline candidate-screen utilities; they cannot validate the historical percentages.
+

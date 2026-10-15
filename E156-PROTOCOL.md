@@ -2,6 +2,8 @@
 
 This repository is the source code and dashboard backing an E156 micro-paper on the [E156 Student Board](https://mahmood726-cyber.github.io/e156/students.html).
 
+**Scientific validity notice (15 October 2026).** The historical 1,050-trial / 140,363-registry-record sample and reported weighted 1.2%, +39.6 percentage-point, 40.8% and 29.1% database match estimates are **not independently reproduced here**. The original sampled NCTs, dated registry snapshot, raw search results, relevance adjudications, strata population totals and original weighting code are missing. An NCT search hit is only a candidate reference, not proof that a retrieved paper reports a trial's results; MED/non-MED are index sources, not paper-type adjudications. The new src/epmc_screen.py and src/epmc_cli.py are separate offline candidate-screen utilities; they cannot validate the historical percentages.
+
 ---
 
 ## `[224]` CT.gov Publication Index Gap
@@ -30,8 +32,8 @@ References (topic pack: CT.gov / ClinicalTrials.gov audit):
   2. Anderson ML, Chiswell K, Peterson ED, Tasneem A, Topping J, Califf RM. 2015. Compliance with results reporting at ClinicalTrials.gov. N Engl J Med. 372(11):1031-1039. doi:10.1056/NEJMsa1409364
 
 Data availability: No patient-level data used. Analysis derived exclusively
-  from publicly available aggregate records. All source identifiers are in
-  the protocol document linked above.
+  from publicly available aggregate records. The original sampled NCT identifiers, archived response files and survey weights
+  are not included here; the aggregate figures are not reproduced.
 
 Ethics: Not required. Study uses only publicly available aggregate data; no
   human participants; no patient-identifiable information; no individual-
@@ -56,9 +58,9 @@ Author contributions (CRediT):
 AI disclosure: Computational tooling (including AI-assisted coding via
   Claude Code [Anthropic]) was used to develop analysis scripts and assist
   with data extraction. The final manuscript was human-written, reviewed,
-  and approved by the author; the submitted text is not AI-generated. All
-  quantitative claims were verified against source data; cross-validation
-  was performed where applicable. The author retains full responsibility for
+  and approved by the author; the submitted text is not AI-generated. The
+  historical quantitative claims have not been independently reproduced
+  against the original inputs or weighting code in this repository. The author retains full responsibility for
   the final content.
 
 Preprint: Not preprinted.
