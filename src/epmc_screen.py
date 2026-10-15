@@ -57,6 +57,7 @@ def classify(nct: str, payload: dict | None) -> dict:
         raise ValueError(f'Invalid NCT ID: {nct!r}')
     out = {
         'nctId': nct,
+        'archived_query_status': 'NOT_VERIFIABLE',
         'query_status': 'QUERY_NOT_EXECUTED' if payload is None else 'INVALID_RESPONSE',
         'raw_hit_count': None, 'candidate_count': None,
         'metadata_identifier_candidate_count': None,
@@ -68,6 +69,20 @@ def classify(nct: str, payload: dict | None) -> dict:
     }
     if not isinstance(payload, dict):
         return out
+    # Where the actual API request metadata is supplied, disallow substitution
+    # of responses for another trial or a broader/different search. Missing
+    # request metadata is recorded as unverified rather than presumed valid.
+    if 'request' in payload:
+        request = payload['request']
+        query = request.get('queryString') if isinstance(request, dict) else None
+        if not isinstance(query, str):
+            out['archived_query_status'] = 'INVALID_REQUEST_METADATA'
+            return out
+        if query.strip().upper() not in {nct, f'"{nct}"'}:
+            out['archived_query_status'] = 'MISMATCH'
+            out['query_status'] = 'QUERY_MISMATCH'
+            return out
+        out['archived_query_status'] = 'EXACT_NCT_QUERY_IN_RESPONSE'
     container = payload.get('resultList')
     hits = container.get('result') if isinstance(container, dict) else None
     count = payload.get('hitCount')
