@@ -43,7 +43,8 @@
     "doi": "",
     "version": "1.0.0",
     "date": "2026-03-29",
-    "validation": "FULL REGISTRY RUN"
+    "validation": "Historical aggregates not independently reproduced",
+    "scientific_scope": "Exact-ID search matches are candidates, not verified trial-results publications; original response archives, sampled NCT IDs and weights unavailable"
   },
   "type": "methods",
   "primary_estimand": "Weighted exact-ID external publication rescue among older CT.gov no-link studies",
@@ -92,5 +93,10 @@
       }
     ]
   },
-  "schema": "e156-v0.2"
+  "schema": "e156-v0.2",
+  "scientific_reproducibility": {
+    "historical_estimates_reproduced": false,
+    "publication_results_adjudicated": false,
+    "original_cohort_archived": false
+  }
 }
