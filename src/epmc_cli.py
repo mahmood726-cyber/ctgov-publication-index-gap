@@ -46,6 +46,8 @@ def replay(ids_file: Path, cached: Path, output: Path) -> dict:
     ids = read_ids(ids_file)
     if output.resolve() == ids_file.resolve():
         raise ValueError('Refusing to overwrite source cohort')
+    if output.resolve() in {(cached / f'{nct}.json').resolve() for nct in ids}:
+        raise ValueError('Refusing to overwrite cached source response')
     rows: list[dict] = []
     sources: dict[str, str] = {}
     for nct in ids:
@@ -58,7 +60,7 @@ def replay(ids_file: Path, cached: Path, output: Path) -> dict:
             except (ValueError, UnicodeError):
                 raw = {}
         row = classify(nct, raw)
-        row['query'] = f'"{nct}"'
+        row['intended_query_not_verified'] = f'"{nct}"'
         row['source_response_sha256'] = sources.get(nct)
         rows.append(row)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -75,12 +77,14 @@ def replay(ids_file: Path, cached: Path, output: Path) -> dict:
         'output_sha256': digest(output),
         'nct_count': len(ids),
         'query_status_counts': dict(Counter(r['query_status'] for r in rows)),
+        'archived_query_status_counts': dict(Counter(r['archived_query_status'] for r in rows)),
         'historical_2026_03_29_estimates_reproduced': False,
         'publication_status_adjudicated': False,
         'limitations': [
             'An NCT identifier in full text, title or abstract may refer to a protocol, systematic review or citation, not results reporting.',
             'MED denotes an index source and is not proof of publication of trial results.',
             'Unavailable, malformed and paginated incomplete results are never treated as zero hits.',
+            'The intended query is not an execution log. Request metadata, where available, is checked for exact scope.',
             'This tool does not establish the claimed weighted 40.8% paper rescue without original NCT sample and survey weights.',
         ],
     }
