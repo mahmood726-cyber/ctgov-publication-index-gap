@@ -194,6 +194,9 @@ body{
 
 /* ── Reduced motion ────────────────────────────── */
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.validation-note{border:2px solid #8e7c5d;border-radius:10px;background:#f8f4eb;padding:16px 18px;margin:18px 0 24px;font:14px/1.6 Arial,sans-serif;color:#27241f}
+.validation-note p{margin:8px 0 0}
+.validation-note a{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -205,6 +208,11 @@ body{
     <h1 id="title"></h1>
     <div class="byline" id="byline"></div>
   </header>
+
+  <aside class="validation-note" role="note" aria-label="Scientific validity and reproducibility warning">
+  <strong>Scientific validity notice (15 October 2026): historical publication figures not independently reproduced.</strong>
+  <p>The original 1,050 sampled NCT identifiers, dated registry snapshot, saved PubMed/Europe PMC responses, publication adjudications, design weights and original aggregation code are absent here. Displayed 1.2%, +39.6 points, 40.8%, 29.1% and sponsor-class estimates are <strong>reported historical claims, not verified publication rates</strong>. A database NCT-identifier search hit — including a full-text-only mention — is not proof that a paper reports the registered trial's results; MED and non-MED indicate indexing sources, not scientific relevance. This site cannot establish that external papers were absent or that statutory reporting rules were breached. The <a href="https://github.com/mahmood726-cyber/ctgov-publication-index-gap#reproducible-independent-candidate-screen-utility">new offline candidate-screen tool</a> does not reproduce the historical figures.</p>
+</aside>
 
   <section class="body-section">
     <p class="body-text" id="body"></p>
